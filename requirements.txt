@@ -1,0 +1,13 @@
+pyrofork==2.3.45
+
+tgcrypto
+pymongo[srv]==3.12.3
+motor==2.5.1
+marshmallow==3.14.1
+umongo==3.0.1
+requests
+bs4
+git+https://github.com/GouthamSER/cinemagoer
+aiohttp
+pytz
+psutil==5.9.4

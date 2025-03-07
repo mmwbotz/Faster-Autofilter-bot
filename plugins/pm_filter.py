@@ -762,6 +762,9 @@ async def auto_filter(client, msg):
 
     if spoll:
         await msg.message.delete()
+    except:
+        pass
+        
 
 async def manual_filters(client, message, text=False):
     try:

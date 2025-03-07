@@ -22,10 +22,6 @@ from database.filters_mdb import (
     find_filter,
     get_filters,
 )
-from database.gfilters_mdb import (
-    find_gfilter,
-    get_gfilters,
-)
 import logging
 
 logger = logging.getLogger(__name__)
@@ -34,8 +30,8 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 
-@Client.on_message(filters.group | filters.private & filters.text & filters.incoming) 
-async def give_filter(client, message):
+@Client.on_message(filters.group | filters.private & filters.text & filters.incoming) #GIVE FILTER IN PM BRO IDEA OF GOUTHAM SER
+async def find_filter(client, message):
     k = await manual_filters(client, message)
     if k == False:
         await auto_filter(client, message)

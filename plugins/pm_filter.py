@@ -716,7 +716,7 @@ async def auto_filter(client, msg):
     message = msg
     settings = await get_settings(message.chat.id)
     
-    if message.text.startswith("/"): 
+    if message.text.startswith("/"):
         return  # Ignore commands
     
     if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
@@ -725,45 +725,40 @@ async def auto_filter(client, msg):
     if 2 < len(message.text) < 100:
         search = message.text
         files, offset, total_results = await get_search_results(message.chat.id, search.lower(), offset=0, filter=True)
+        
         if not files:
-            # Instead of spell check, return "Search Failed"
             sdell = await message.reply_text("**𝖨 𝖢𝗈𝗎𝗅𝖽𝗇'𝗍 𝖥𝗂𝗇𝖽 𝖳𝗁𝖾 𝖬𝖾𝖽𝗂𝖺 𝖥𝗂𝗅𝖾 𝖸𝗈𝗎 𝖱𝖾𝗊𝗎𝖾𝗌𝗍𝖾𝖽** 😕\n𝖪𝗂𝗇𝖽𝗅𝗒 𝖱𝖾𝗆𝗈𝗏𝖾 𝖲𝗒𝗆𝖻𝗈𝗅𝗌 𝖫𝗂𝗄𝖾 ,./-_:;,𝖠𝗇𝖽 𝖳𝗒𝗉𝖾 𝖨𝗇 𝖢𝗈𝗋𝗋𝖾𝖼𝗍𝗅𝗒.\n(𝖱𝖾𝖿𝖾𝗋 𝖦𝗈𝗈𝗀𝗅𝖾)")
             await asyncio.sleep(15)
             await sdell.delete()
-            return 
-    else:
-        return
-    
-    pre = 'filep' if settings['file_secure'] else 'file'
-    
-    if settings["button"]:
-        btn = [[InlineKeyboardButton(text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'), ] for file in files]
-    else:
-        btn = [[InlineKeyboardButton(text=f"{file.file_name}", callback_data=f'{pre}#{file.file_id}'), InlineKeyboardButton(text=f"{get_size(file.file_size)}", callback_data=f'{pre}#{file.file_id}'), ] for file in files]
-
-    if offset != "":
-        key = f"{message.chat.id}-{message.id}"
-        BUTTONS[key] = search
-        req = message.from_user.id if message.from_user else 0
-        btn.append([InlineKeyboardButton(text=f" 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"), InlineKeyboardButton(text="Nᴇxᴛ ", callback_data=f"next_{req}_{key}_{offset}")])
-    else:
-        btn.append([InlineKeyboardButton(text="No More Pages Are Available", callback_data="pages")])
-
-    cap = f"<b>Hᴇʏ 👋🏻{message.from_user.mention} 💝,\n\n📫 Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ</b>"
-
-    try:
-        perfectok=await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
-        if settings["auto_delete"]:
-            await asyncio.sleep(600)
-            await perfectok.delete()
-            dai=await message.reply(f"<b>Hey {message.from_user.mention} \n\nYour Request Has Been Deleted 👍 \n<i>(Due To Avoid Copyrights Issue😌)</i>\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+            return
+        
+        pre = 'filep' if settings['file_secure'] else 'file'
+        
+        if settings["button"]:
+            btn = [[InlineKeyboardButton(text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'), ] for file in files]
+        else:
+            btn = [[InlineKeyboardButton(text=f"{file.file_name}", callback_data=f'{pre}#{file.file_id}'), InlineKeyboardButton(text=f"{get_size(file.file_size)}", callback_data=f'{pre}#{file.file_id}'), ] for file in files]
+        
+        if offset != "":
+            key = f"{message.chat.id}-{message.id}"
+            BUTTONS[key] = search
+            req = message.from_user.id if message.from_user else 0
+            btn.append([InlineKeyboardButton(text=f" 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"), InlineKeyboardButton(text="Nᴇxᴛ ", callback_data=f"next_{req}_{key}_{offset}")])
+        else:
+            btn.append([InlineKeyboardButton(text="No More Pages Are Available", callback_data="pages")])
+        
+        cap = f"<b>Hᴇʏ 👋🏻{message.from_user.mention} 💝,\n\n📫 Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ</b>"
+        
+        try:
+            perfectok = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
+            if settings["auto_delete"]:
+                await asyncio.sleep(600)
+                await perfectok.delete()
+            dai = await message.reply(f"<b>Hey {message.from_user.mention} \n\nYour Request Has Been Deleted 👍 \n<i>(Due To Avoid Copyrights Issue😌)</i>\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
             await asyncio.sleep(100)
             await dai.delete()
-
-    if spoll:
-        await msg.message.delete()
-    except:
-        pass
+        except Exception as e:
+            logger.exception(e)
         
 
 async def manual_filters(client, message, text=False):

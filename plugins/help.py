@@ -12,7 +12,6 @@ async def ai_generate_private(client, message):
         ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    # Use triple quotes for multi-line string
     await message.reply_text(
         text="""<b><blockquote>❗️How to Search Movies Here❓
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬

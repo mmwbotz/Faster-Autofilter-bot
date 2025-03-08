@@ -1,9 +1,9 @@
 class script(object):
-    START_TXT = """<b><blockquote>𝖧𝖾𝗒{}, 𝖨 𝖠𝗆 {}, 𝖧𝖺𝗉𝗉𝗒 🖤 𝖳𝗈 𝖧𝖺𝗏𝖾 𝖸𝗈𝗎
+    START_TXT = """<b>𝖧𝖾𝗒{}, 𝖨 𝖠𝗆 {}, 𝖧𝖺𝗉𝗉𝗒 🖤 𝖳𝗈 𝖧𝖺𝗏𝖾 𝖸𝗈𝗎
 
 Here You Can Request Movie's, Just Sent Movie Name With Proper Google Spelling..!!
 
-Fᴏʀ Mᴏʀᴇ Dᴇᴛᴀɪʟꜱ Cʟɪᴄᴋ /help</blockquote></b>"""
+Fᴏʀ Mᴏʀᴇ Dᴇᴛᴀɪʟꜱ Cʟɪᴄᴋ /help </b>"""
     
     HELP_TXT = """<b>𝙷𝙴𝚈 {}
 <blockquote>𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂.</blockquote></b>"""

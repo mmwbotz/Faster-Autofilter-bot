@@ -114,34 +114,6 @@ async def next_page(bot, query):
     await query.answer()
 
 
-@Client.on_callback_query(filters.regex(r"^spol"))
-async def advantage_spoll_choker(bot, query):
-    _, user, movie_, key = query.data.split('#')
-    movies = temp.SPELL_CHECK.get(key)
-    if not movies:
-        return await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name), show_alert=True)
-    if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
-    if movie_ == "close_spellcheck":
-        return await query.message.delete()
-    movie = movies[(int(movie_))]
-    await query.answer(script.TOP_ALRT_MSG)
-    gl = await global_filters(bot, query.message, text=movie)
-    if gl == False:
-        k = await manual_filters(bot, query.message, text=movie)
-        if k == False:
-            files, offset, total_results = await get_search_results(query.message.chat.id, movie, offset=0, filter=True)
-            if files:
-                k = (movie, files, offset, total_results)
-                await auto_filter(bot, query, k)
-            else:
-                reqstr1 = query.from_user.id if query.from_user else 0
-                reqstr = await bot.get_users(reqstr1)
-                if NO_RESULTS_MSG:
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, movie)))
-                k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(10)
-                await k.delete()    
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
@@ -218,8 +190,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton(f"{stat}", callback_data=f"{cb}:{group_id}"),
-             InlineKeyboardButton("DELETE", callback_data=f"deletecb:{group_id}")],
-            [InlineKeyboardButton("BACK", callback_data="backcb")]
+             InlineKeyboardButton("Delete", callback_data=f"deletecb:{group_id}")],
+            [InlineKeyboardButton("Back", callback_data="backcb")]
         ])
 
         await query.message.edit_text(
@@ -418,9 +390,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "minfo":
         await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nᴍᴏᴠɪᴇ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ᴀᴠᴀᴛᴀʀ: ᴛʜᴇ ᴡᴀʏ ᴏғ ᴡᴀᴛᴇʀ\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)", show_alert=True)
-    
-    elif query.data == "rendering_info":
-        await query.answer(script.RENDERING_TXT, show_alert=True)
     
     elif query.data == "tinfo":
         await query.answer("▣ ᴛɪᴘs ▣\n\n★ ᴛʏᴘᴇ ᴄᴏʀʀᴇᴄᴛ sᴘᴇʟʟɪɴɢ (ɢᴏᴏɢʟᴇ)\n\n★ ɪғ ʏᴏᴜ ɴᴏᴛ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇ ɪɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ᴛʜᴇɴ ᴛʜᴇ ɴᴇxᴛ sᴛᴇᴘ ɪs ᴄʟɪᴄᴋ ɴᴇxᴛ ʙᴜᴛᴛᴏɴ.\n\n★ ᴄᴏɴᴛɪɴᴜᴇ ᴛʜɪs ᴍᴇᴛʜᴏᴅ ᴛᴏ ɢᴇᴛᴛɪɴɢ ʏᴏᴜ ғɪʟᴇ", show_alert=True)    

@@ -516,12 +516,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Wᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}'),
                     InlineKeyboardButton('✅ Yes' if settings["welcome"] else '❌ No',
                                          callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
-                ],
-                [
-                    InlineKeyboardButton('Aᴜᴛᴏ Dᴇʟᴇᴛᴇ',
-                                         callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('10 Mins' if settings["auto_delete"] else 'OFF',
-                                         callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{str(grp_id)}')
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
@@ -562,7 +556,7 @@ async def auto_filter(client, msg):
         req = message.from_user.id if message.from_user else 0
         btn.append([InlineKeyboardButton(text=f" 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"), InlineKeyboardButton(text="Nᴇxᴛ ", callback_data=f"next_{req}_{key}_{offset}")])
     else:
-        btn.append([InlineKeyboardButton(text="No More Pages Are Available", callback_data="pages")])
+        btn.append([InlineKeyboardButton(text="Finished 😊", callback_data="pages")])
 
     cap = f"<b>Hᴇʏ 👋🏻{message.from_user.mention} 💝,\n\n📫 Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ</b>"
 

@@ -2,6 +2,7 @@ import re
 import os
 from os import environ
 from Script import script 
+from time import time
 
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
@@ -17,6 +18,8 @@ SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ['API_ID'])
 API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
+
+BOT_START_TIME = time()
 
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))

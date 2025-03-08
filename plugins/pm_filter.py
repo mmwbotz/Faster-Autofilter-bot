@@ -750,29 +750,14 @@ async def auto_filter(client, msg):
 
     cap = f"<b>Hᴇʏ 👋🏻{message.from_user.mention} 💝,\n\n📫 Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ</b>"
 
+    autodel = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
+    await asyncio.sleep(600)
+    await autodel.delete()  # del msg auto 10min filter
+    dai = await message.reply(f"<b>Hey {message.from_user.mention} \n\nYour Request Has Been Deleted 👍 \n<i>(Due To Avoid Copyrights Issue😌)</i>\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
+    await asyncio.sleep(100)
+    await dai.delete()
+
     
-    try:
-        perfectok = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
-        if settings["auto_delete"]:
-            await asyncio.sleep(600)
-            await perfectok.delete()
-        dai = await message.reply(f"<b>Hey {message.from_user.mention} \n\nYour Request Has Been Deleted 👍 \n<i>(Due To Avoid Copyrights Issue😌)</i>\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
-        await asyncio.sleep(100)
-        await dai.delete()
-    except Exception as e:
-        logger.exception(e)
-        andi = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
-        if settings["auto_delete"]:
-            await asyncio.sleep(600)
-            await andi.delete()
-        dai = await message.reply(f"<b>Hey {message.from_user.mention} \n\nYour Request Has Been Deleted 👍 \n<i>(Due To Avoid Copyrights Issue😌)</i>\n\nIF YOU WANT THAT FILE, REQUEST AGAIN ❤️</b>")
-        await asyncio.sleep(100)
-        await dai.delete()
-
-    if spoll:
-        await msg.message.delete()
-
-
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
     name = text or message.text

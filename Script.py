@@ -59,13 +59,12 @@ Fᴏʀ Mᴏʀᴇ Dᴇᴛᴀɪʟꜱ Cʟɪᴄᴋ /help</blockquote></b>"""
 3. Forward the last message to me with quotes.
  I'll add all the files in that channel to my db."""
     
-    CAPTION = """❀Fɪʟᴇ Nᴀᴍᴇ:- {file_name}
+    CAPTION = """❀Fɪʟᴇ Nᴀᴍᴇ:-<code>{file_name}</code>
 
 ❀Fɪʟᴇ Sɪᴢᴇ:-{file_size}
 
-JOIN HERE & SUPPORT 
-⍟<b><a href=https://t.me/mallumovieworldmain>Join For Movies</a></b>
-⍟<b><a href=https://t.me/mallumovieworldmain1>Join For Updates</a></b>"""
+<b><a href=https://t.me/mallumovieworldmain>Join For Movies</a></b>
+<b><a href=https://t.me/mallumovieworldmain1>Join For Updates</a></b>"""
 
     IMDB_TEMPLATE_TXT = """
 <b>Query: {query}</b> \n‌‌‌‌IMDb Data:

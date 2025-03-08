@@ -454,26 +454,6 @@ async def settings(client, message):
             ],
             [
                 InlineKeyboardButton(
-                    'IMDB',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ Yes' if settings["imdb"] else '❌ No',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    'Sᴘᴇʟʟ Cʜᴇᴄᴋ',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ Yes' if settings["spell_check"] else '❌ No',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
-            ],
-            [
-                InlineKeyboardButton(
                     'Wᴇʟᴄᴏᴍᴇ',
                     callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
                 ),
@@ -482,22 +462,12 @@ async def settings(client, message):
                     callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
                 ),
             ],
-            [
-                InlineKeyboardButton(
-                    'Aᴜᴛᴏ Dᴇʟᴇᴛᴇ',
-                    callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '10 Mins' if settings["auto_delete"] else 'OFF',
-                    callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}',
-                ),
-            ],
         ]
 
         reply_markup = InlineKeyboardMarkup(buttons)
 
         await message.reply_text(
-            text=f"<b>Change Your Settings for {title} As Your Wish ⚙</b>",
+            text=f"<b>Change Settings of {title}\nAs Your Wish ⚙</b>",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode=enums.ParseMode.HTML,

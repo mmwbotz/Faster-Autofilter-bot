@@ -14,22 +14,22 @@ async def ai_generate_private(client, message):
     
     # Use triple quotes for multi-line string
     await message.reply_text(
-        text="""❗️How to Search Movies Here❓
+        text="""<b><blockquote>❗️How to Search Movies Here❓
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 1. Just Send Movie Name and Movie Released Year Correctly.
-(Check Google for Correct Movie Spelling and Movie Released Year)
+<blockquote>(Check Google for Correct Movie Spelling and Movie Released Year)</blockquote>
 
 Examples: -
 Oppam 2016
 Baahubali 2015 1080p
-(For Getting only 1080p Quality Files)
+<blockquote>(For Getting only 1080p Quality Files)</blockquote>
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 Baahubali 2015 Malayalam
 Baahubali 2015 Tamil
-(For Dubbed Movie Files)
+<blockquote>(For Dubbed Movie Files)</blockquote>
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ❗️On Android, Better Use VLC Media Player For Watch Movie's.
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-Cᴏɴᴛᴀᴄᴛ Bᴏᴛ Dᴇᴠᴇʟᴏᴘᴇʀ (Oʀ) Rᴇᴘᴏʀᴛ Bᴜɢꜱ..!! 👉 @aktelegram1""",
+Cᴏɴᴛᴀᴄᴛ Bᴏᴛ Dᴇᴠᴇʟᴏᴘᴇʀ (Oʀ) Rᴇᴘᴏʀᴛ Bᴜɢꜱ..!! 👉 @aktelegram1</b>""",
         reply_markup=reply_markup
     )

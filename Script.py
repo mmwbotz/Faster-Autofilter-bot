@@ -1,9 +1,9 @@
 class script(object):
-    START_TXT = """ Hᴇʟʟᴏ {}.
-    
-𝖨𝗆 𝖺𝗇 Autofilter Bot 𝗐𝗁𝗂𝖼𝗁 𝖼𝖺𝗇 𝗉𝗋𝗈𝗏𝗂𝖽𝖾 𝗆𝗈𝗏𝗂𝖾𝗌 𝗂𝗇 𝗒𝗈𝗎𝗋 𝗀𝗋𝗈𝗎𝗉𝗌.
+    START_TXT = """<b><blockquote>𝖧𝖾𝗒{}, 𝖨 𝖠𝗆 {}, 𝖧𝖺𝗉𝗉𝗒 🖤 𝖳𝗈 𝖧𝖺𝗏𝖾 𝖸𝗈𝗎
 
-+ 𝖠𝖽𝖽 𝖬𝖾 𝖳𝗈 𝖸𝗈𝗎𝗋 𝖦𝗋𝗈𝗎𝗉 + 𝖺𝗇𝖽 𝗉𝗋𝗈𝗆𝗈𝗍𝖾 𝗆𝖾 𝖺𝗌 𝖺𝖽𝗆𝗂𝗇 𝗍𝗈 𝗅𝖾𝗍 𝗆𝖾 𝗀𝖾𝗍 𝗂𝗇 𝖺𝖼𝗍𝗂𝗈𝗇."""
+Here You Can Request Movie's, Just Sent Movie Name With Proper Google Spelling..!!
+
+Fᴏʀ Mᴏʀᴇ Dᴇᴛᴀɪʟꜱ Cʟɪᴄᴋ /help</blockquote></b>"""
     
     HELP_TXT = """<b>𝙷𝙴𝚈 {}
 <blockquote>𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂.</blockquote></b>"""
@@ -179,21 +179,21 @@ Message <b>: {}</b>"""
 🆓Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{} </code></blockquote></b>"""
     
     LOG_TEXT_G = """#NewGroup
-    
+    test
 Group = {}(<code>{}</code>)
 Total Members = <code>{}</code>
 Added By - {}
 """
     RESTART_TXT = """
 <b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !
-
+test
 📅 Dᴀᴛᴇ : <code>{}</code>
 ⏰Tɪᴍᴇ : <code>{}</code>
 🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>Asia/Kolkata</code></b>"""
     
     LOG_TEXT_P = """#NewUser
-    
+    test
 ID - <code>{}</code>
 Name - {}
 """
-    LOGO = """Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !"""
+    LOGO = """test  !"""
